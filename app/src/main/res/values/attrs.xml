@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LoadingLayout">
+        <attr name="strLoading" format="string" />
+        <attr name="distance" format="dimension" />
+        <attr name="strLoadingColor" format="color" />
+        <attr name="strLoadingSize" format="dimension" />
+        <attr name="contentBg" format="color" />
+        <attr name="loadingBg" format="color" />
+        <attr name="loadingWidth" format="dimension" />
+        <attr name="loadingHeight" format="dimension" />
+        <attr name="loadingGif" format="reference" />
+        <attr name="gifViewWidth" format="dimension" />
+        <attr name="gifViewHeight" format="dimension" />
+        <attr name="loadingDrawable" format="reference" />
+        <attr name="imgLoadingWidth" format="dimension" />
+        <attr name="imgLoadingHeight" format="dimension" />
+        <attr name="loadingContentDrawable" format="reference" />
+    </declare-styleable>
+</resources>

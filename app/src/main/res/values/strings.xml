@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">LoadingLayout</string>
+    <string name="action_settings">Settings</string>
+    <string name="str_loading">正在加载...</string>
+</resources>
