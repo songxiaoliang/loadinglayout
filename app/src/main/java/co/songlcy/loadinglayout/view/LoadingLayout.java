@@ -22,6 +22,7 @@ import co.songlcy.loadinglayout.R;
 import pl.droidsonroids.gif.GifImageView;
 
 /**
+ * version :1.0.1
  * Created by Song on 2016/4/30.
  * Blog:http://blog.csdn.net/u013718120
  */
