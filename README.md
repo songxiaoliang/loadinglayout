@@ -53,8 +53,8 @@ Above two maps are custom different Dialog. Loading as long as you have a wealth
         
 	    },5000);
         
-## 我的博客
-###[点击查看](http://blog.csdn.net/u013718120)
-## 联系我
+## My Blog
+###[Click to view](http://blog.csdn.net/u013718120)
+## Contact Me
 ###Email：563609104@qq.com
     
