@@ -36,7 +36,23 @@ Above two maps are custom different Dialog. Loading as long as you have a wealth
     app:loadingContentDrawable="@drawable/shape" //设置Loading窗口的自定义Drawable，例如圆角shape。
       
     app:loadingDrawable="@drawable/anim_loadig" //设置Loading的帧动画
-      
+###3.代码中使用：
+    mLoadingLayout = (LoadingLayout) findViewById(R.id.loadinglayout);
+    
+    mLoadingLayout.showLoading();//显示Loading
+    
+        new Handler().postDelayed(new Runnable() {
+    
+            @Override
+	        public void run() {
+                
+		        //延迟5秒后隐藏Loading
+		        mLoadingLayout.hideLoading();
+            
+	        }
+        
+	    },5000);
+        
 ## 我的博客
 ###[点击查看](http://blog.csdn.net/u013718120)
 ## 联系我
