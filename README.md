@@ -38,7 +38,7 @@ Above two maps are custom different Dialog. Loading as long as you have a wealth
       app:loadingDrawable="@drawable/anim_loadig" //设置Loading的帧动画
       
 # 我的博客
-      http://blog.csdn.net/u013718120
+      [点击查看我的博客](http://blog.csdn.net/u013718120)  
 # 联系我
       Email:563609104@qq.com
     
