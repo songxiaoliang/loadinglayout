@@ -1,11 +1,11 @@
 # LoadingLayout
 Above two maps are custom different Dialog. Loading as long as you have a wealth of imagination, you can define a more splendid load of animation。
 ## Development Help
-###1.Add the module project in the following references build.gradle:
+####1.Add the module project in the following references build.gradle:
     
       compile 'com.song:loadinglayout:1.0.0'
       
-###2.LoadingLayout support function：
+####2.LoadingLayout support function：
       
     app:contentBg="@android:color/transparent" //设置遮罩层背景色
       
