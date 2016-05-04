@@ -5,7 +5,7 @@ Above two maps are custom different Dialog. Loading as long as you have a wealth
     
       compile 'com.song:loadinglayout:1.0.0'
       
-###2.LoadingLayout支持的属性如下：
+###2.LoadingLayout支持的属性：
       
     app:contentBg="@android:color/transparent" //设置遮罩层背景色
       
