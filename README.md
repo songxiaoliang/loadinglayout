@@ -1,13 +1,12 @@
 # LoadingLayout
 Above two maps are custom different Dialog. Loading as long as you have a wealth of imagination, you can define a more splendid load of animation。
-# Development Help（开发文档）
-  1.Reference method（引用方式）
-      在项目moudle的build.gradle中添加如下引用:
-      
+# Development Help
+  1.在项目moudle的build.gradle中添加如下引用:
+    
       compile 'com.song:loadinglayout:1.0.0'
       
-  2.LoadingLayout support function（LoadingLayout支持的功能）
-  
+  2.LoadingLayout支持的属性如下：
+      
       app:contentBg="@android:color/transparent" //设置遮罩层背景色
       
       app:loadingBg="@android:color/white" //设置Loading窗口背景色
@@ -38,8 +37,8 @@ Above two maps are custom different Dialog. Loading as long as you have a wealth
       
       app:loadingDrawable="@drawable/anim_loadig" //设置Loading的帧动画
       
-# My Blog（我的博客）
+# 我的博客
       http://blog.csdn.net/u013718120
-# Contact me（联系我）
+# 联系我
       Email:563609104@qq.com
     
