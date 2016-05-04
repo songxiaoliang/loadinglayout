@@ -1,11 +1,11 @@
 # LoadingLayout
 Above two maps are custom different Dialog. Loading as long as you have a wealth of imagination, you can define a more splendid load of animation。
 ## Development Help
-###1.在项目moudle的build.gradle中添加如下引用:
+###1.Add the module project in the following references build.gradle:
     
       compile 'com.song:loadinglayout:1.0.0'
       
-###2.LoadingLayout支持的属性：
+###2.LoadingLayout support function：
       
     app:contentBg="@android:color/transparent" //设置遮罩层背景色
       
@@ -36,7 +36,7 @@ Above two maps are custom different Dialog. Loading as long as you have a wealth
     app:loadingContentDrawable="@drawable/shape" //设置Loading窗口的自定义Drawable，例如圆角shape。
       
     app:loadingDrawable="@drawable/anim_loadig" //设置Loading的帧动画
-###3.代码中使用：
+###3.Use code：
     mLoadingLayout = (LoadingLayout) findViewById(R.id.loadinglayout);
     
     mLoadingLayout.showLoading();//显示Loading
