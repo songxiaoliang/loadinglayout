@@ -35,7 +35,12 @@ Above two maps are custom different Dialog. Loading as long as you have a wealth
       
     app:loadingContentDrawable="@drawable/shape" //设置Loading窗口的自定义Drawable，例如圆角shape。
       
-    app:loadingDrawable="@drawable/anim_loadig" //设置Loading的帧动画
+    app:loadingFrameDrawable="@drawable/anim_loadig" //设置Loading的帧动画
+    
+    app:loadingImage="@mipmap/ic_launcher" // 设置显示的图片，此属性要结合补间动画一起使用。
+    
+    app:loadingTweenDrawable="@anim/translate" //设置补间动画，此属性要结合app:loadingImage一起使用。
+    
 ####3.Use code：
     mLoadingLayout = (LoadingLayout) findViewById(R.id.loadinglayout);
     
