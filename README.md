@@ -1,7 +1,7 @@
 # LoadingLayout
 Above two maps are custom different Dialog. Loading as long as you have a wealth of imagination, you can define a more splendid load of animation。
 ## Development Help
-####1.Add the module project in the following references build.gradle:
+####1.Insert the following dependency to build.gradle file of your project:
     
       compile 'com.song:loadinglayout:1.0.0'
       
