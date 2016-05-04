@@ -7,11 +7,12 @@ import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -46,10 +47,13 @@ public class LoadingLayout extends RelativeLayout{
     private int loadingHeight;//loading height default:100dp
     private int strLoadingColor;//textColor：default: black
     private int strLoadingSize;//textSize  default:16dp
-    private String strLoading;
-    private Drawable loadingDrawable;//loading animation-list
-    private Drawable loadingGif;//GifImage
+    private String strLoading;//loading text
+    private Drawable loadingImage;//loading image
+    private Drawable loadingFrameDrawable;//loading animation-list
+    private int loadingTweenDrawable;//TweenDrawable
+    private int loadingGif;//GifImage
     private Drawable loadingContentDrawable;//Loading style
+    private Animation mTweenAnimation;//TweenAnimation
 
     public LoadingLayout(Context context) {
         this(context, null);
@@ -71,59 +75,84 @@ public class LoadingLayout extends RelativeLayout{
 
             int attr = typedArray.getIndex(i);
             if(attr == R.styleable.LoadingLayout_contentBg) {
+
                 contentBg = typedArray.getColor(attr,Color.parseColor("#55000000"));
+
             } else if(attr == R.styleable.LoadingLayout_loadingBg) {
+
                 loadingBg = typedArray.getColor(attr,Color.WHITE);
-            } else if(attr == R.styleable.LoadingLayout_loadingDrawable) {
-                loadingDrawable = typedArray.getDrawable(attr);
+
+            } else if(attr == R.styleable.LoadingLayout_loadingFrameDrawable) {
+
+                loadingFrameDrawable = typedArray.getDrawable(attr);
+
+            } else if(attr == R.styleable.LoadingLayout_loadingTweenDrawable) {
+
+                loadingTweenDrawable = typedArray.getResourceId(attr,0);
+
             } else if(attr == R.styleable.LoadingLayout_loadingHeight) {
+
                 loadingHeight = typedArray.getDimensionPixelSize(attr, (int) TypedValue.applyDimension(
                         TypedValue.COMPLEX_UNIT_DIP, 100, getResources().getDisplayMetrics()));
+
             } else if(attr == R.styleable.LoadingLayout_loadingWidth) {
+
                 loadingWidth = typedArray.getDimensionPixelSize(attr, (int) TypedValue.applyDimension(
                         TypedValue.COMPLEX_UNIT_DIP, 200, getResources().getDisplayMetrics()));
+
             } else if(attr == R.styleable.LoadingLayout_strLoading) {
+
                 strLoading = typedArray.getString(attr);
+
             } else if(attr == R.styleable.LoadingLayout_strLoadingColor) {
+
                 strLoadingColor = typedArray.getColor(attr, Color.BLACK);
+
             } else if(attr ==  R.styleable.LoadingLayout_strLoadingSize) {
+
                 strLoadingSize = typedArray.getDimensionPixelSize(attr, (int) TypedValue.applyDimension(
                         TypedValue.COMPLEX_UNIT_SP, 16, getResources().getDisplayMetrics()));
+
             } else if(attr == R.styleable.LoadingLayout_imgLoadingHeight) {
+
                 imgLoadingHeight = typedArray.getDimensionPixelSize(attr, (int) TypedValue.applyDimension(
                         TypedValue.COMPLEX_UNIT_DIP, 30, getResources().getDisplayMetrics()));
+
             } else if(attr == R.styleable.LoadingLayout_imgLoadingWidth) {
+
                 imgLoadingWidth = typedArray.getDimensionPixelSize(attr,(int) TypedValue.applyDimension(
                         TypedValue.COMPLEX_UNIT_DIP,30,getResources().getDisplayMetrics()));
 
             } else if(attr == R.styleable.LoadingLayout_gifViewHeight) {
+
                 gifViewHeight = typedArray.getDimensionPixelSize(attr,(int) TypedValue.applyDimension(
                         TypedValue.COMPLEX_UNIT_DIP,30,getResources().getDisplayMetrics()));
+
             } else if(attr == R.styleable.LoadingLayout_gifViewWidth) {
+
                 gifViewWidth = typedArray.getDimensionPixelSize(attr,(int) TypedValue.applyDimension(
                         TypedValue.COMPLEX_UNIT_DIP,30,getResources().getDisplayMetrics()));
+
             } else if(attr == R.styleable.LoadingLayout_distance) {
-                distance = typedArray.getDimensionPixelSize(attr,(int) TypedValue.applyDimension(
-                        TypedValue.COMPLEX_UNIT_DIP,10,getResources().getDisplayMetrics()));
+
+                distance = typedArray.getDimensionPixelSize(attr, (int) TypedValue.applyDimension(
+                        TypedValue.COMPLEX_UNIT_DIP, 10, getResources().getDisplayMetrics()));
+
             } else if(attr == R.styleable.LoadingLayout_loadingGif) {
-                loadingGif = typedArray.getDrawable(attr);
+
+                loadingGif = typedArray.getResourceId(attr,0);
+
             } else if(attr == R.styleable.LoadingLayout_loadingContentDrawable) {
+
                 loadingContentDrawable = typedArray.getDrawable(attr);
+
+            } else if(attr == R.styleable.LoadingLayout_loadingImage) {
+                loadingImage = typedArray.getDrawable(attr);
             }
         }
 
         typedArray.recycle();
         init();
-    }
-
-    @Override
-    protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        super.onLayout(changed, l, t, r, b);
-    }
-
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
     private void init() {
@@ -141,6 +170,16 @@ public class LoadingLayout extends RelativeLayout{
 
         initView();
         initViewAttrValue();
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        super.onLayout(changed, l, t, r, b);
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
     /**
@@ -161,13 +200,18 @@ public class LoadingLayout extends RelativeLayout{
      */
     private void initViewAttrValue() {
 
-        if(null != strLoading) {
+        if(strLoading != null) {
+
             tvLoading.setText(strLoading);
+
+        } else {
+
+            tvLoading.setVisibility(View.GONE);
         }
 
         if(strLoadingSize != 0) {
 
-            tvLoading.setTextSize(TypedValue.COMPLEX_UNIT_PX,strLoadingSize);
+            tvLoading.setTextSize(TypedValue.COMPLEX_UNIT_PX, strLoadingSize);
         }
 
         if(strLoadingColor != 0) {
@@ -180,13 +224,13 @@ public class LoadingLayout extends RelativeLayout{
            tvLoadingLP.leftMargin = distance;
         }
 
-        if(loadingHeight != 0 ) {
+        if(loadingHeight != 0) {
 
             LinearLayout.LayoutParams loadingLP = (LinearLayout.LayoutParams) llyLoading.getLayoutParams();
             loadingLP.height = loadingHeight;
         }
 
-        if(loadingWidth != 0 ) {
+        if(loadingWidth != 0) {
 
             LinearLayout.LayoutParams loadingLP = (LinearLayout.LayoutParams) llyLoading.getLayoutParams();
             loadingLP.width = loadingWidth;
@@ -214,25 +258,10 @@ public class LoadingLayout extends RelativeLayout{
 
             ViewGroup.LayoutParams gifLp = gifImageView.getLayoutParams();
             gifLp.height = gifViewHeight;
-
         }
 
-        if(null != loadingDrawable && null != loadingGif) {
-
-            ivLoading.setVisibility(View.VISIBLE);
-            ivLoading.setBackground(ContextCompat.getDrawable(mContext, R.drawable.anim_loading));
-        } else if(null != loadingDrawable) {
-
-            ivLoading.setVisibility(View.VISIBLE);
-            ivLoading.setBackground(loadingDrawable);
-        } else if(null != loadingGif) {
-
-            gifImageView.setVisibility(View.VISIBLE);
-            gifImageView.setImageDrawable(loadingGif);
-        } else {
-
-            ivLoading.setVisibility(View.VISIBLE);
-            ivLoading.setBackground(ContextCompat.getDrawable(mContext, R.drawable.anim_loading));
+        if(loadingImage != null) {
+            ivLoading.setImageDrawable(loadingImage);
         }
 
         if(contentBg != 0) {
@@ -249,6 +278,20 @@ public class LoadingLayout extends RelativeLayout{
             llyLoading.setBackground(loadingContentDrawable);
         }
 
+        if(loadingFrameDrawable != null) {
+            ivLoading.setVisibility(View.VISIBLE);
+            ivLoading.setBackground(loadingFrameDrawable);
+        } else if(loadingTweenDrawable != 0 && loadingGif != 0 && loadingImage != null) {
+            ivLoading.setVisibility(View.VISIBLE);
+            mTweenAnimation =  AnimationUtils.loadAnimation(mContext,loadingTweenDrawable);
+        } else if (loadingGif != 0) {
+            gifImageView.setVisibility(View.VISIBLE);
+            gifImageView.setImageResource(loadingGif);
+        } else if(loadingTweenDrawable != 0 && loadingImage != null) {
+            ivLoading.setVisibility(View.VISIBLE);
+            mTweenAnimation =  AnimationUtils.loadAnimation(mContext,loadingTweenDrawable);
+        }
+
         requestLayout();
     }
 
@@ -258,13 +301,25 @@ public class LoadingLayout extends RelativeLayout{
     public void showLoading() {
 
         llyContent.setVisibility(View.VISIBLE);
-        try {
-            mAnimationDrawable = (AnimationDrawable)ivLoading.getBackground();
-            mAnimationDrawable.start();
-        } catch(Exception e) {
-            ivLoading.setBackground(ContextCompat.getDrawable(mContext, R.drawable.anim_loading));
-            mAnimationDrawable = (AnimationDrawable)ivLoading.getBackground();
-            mAnimationDrawable.start();
+
+        if(null != loadingFrameDrawable) {
+
+            try {
+                mAnimationDrawable = (AnimationDrawable)ivLoading.getBackground();
+                mAnimationDrawable.start();
+            } catch(Exception e) {
+                ivLoading.setBackground(ContextCompat.getDrawable(mContext, R.drawable.anim_loading));
+                mAnimationDrawable = (AnimationDrawable)ivLoading.getBackground();
+                mAnimationDrawable.start();
+            }
+
+        } else if(mTweenAnimation != null) {
+
+            try{
+                ivLoading.clearAnimation();
+                ivLoading.startAnimation(mTweenAnimation);
+            } catch(Exception e){}
+
         }
     }
 
@@ -273,11 +328,14 @@ public class LoadingLayout extends RelativeLayout{
      */
     public void hideLoading() {
 
-        try {
-            mAnimationDrawable.stop();
-            llyContent.setVisibility(View.GONE);
-        } catch(Exception e) {
-            Log.e("co.song.loadinglayout","mAnimationDrawable is error");
+        llyContent.setVisibility(View.GONE);
+
+        if(mAnimationDrawable != null) {
+                mAnimationDrawable.stop();
+        }
+
+        if(loadingTweenDrawable != 0 && mTweenAnimation != null) {
+            mTweenAnimation.cancel();
         }
     }
 }
