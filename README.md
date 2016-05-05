@@ -6,11 +6,13 @@ Above two maps are custom different Dialog. Loading as long as you have a wealth
 
 ####1.Dependence：
 
-#####Android Studio：Insert the following dependency to build.gradle file of your project:
+#####Android Studio：
+######Insert the following dependency to build.gradle file of your project:
     
      compile 'com.song:loadinglayout:1.0.1'
       
-#####Eclipse：Copy and layout LoadingLayout attrs file module under the values and res folder of your module layout_loading corresponding directory.
+#####Eclipse：
+######Copy and layout LoadingLayout attrs file module under the values and res folder of your module layout_loading corresponding directory.
       
 ####2.LoadingLayout support function：
       
