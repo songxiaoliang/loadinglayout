@@ -4,7 +4,7 @@ Above two maps are custom different Dialog. Loading as long as you have a wealth
 
 ![](https://github.com/songxiaoliang/loadinglayout/blob/master/app/demo/loading_gif.jpg) 
 
-![](https://github.com/songxiaoliang/loadinglayout/tree/master/app/demo/loading_frameAnimation.jpg) 
+![](https://github.com/songxiaoliang/loadinglayout/blob/master/app/demo/loading_frameAnimation.jpg) 
 
 ## Development Help
 
