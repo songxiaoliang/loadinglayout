@@ -6,7 +6,7 @@ Above two maps are custom different Dialog. Loading as long as you have a wealth
 
 ####1.Dependence：
 
-#####Android Studio:Insert the following dependency to build.gradle file of your project:
+#####Android Studio：Insert the following dependency to build.gradle file of your project:
     
      compile 'com.song:loadinglayout:1.0.1'
       
