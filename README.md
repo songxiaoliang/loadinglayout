@@ -59,6 +59,28 @@ Above two maps are custom different Dialog. Loading as long as you have a wealth
     app:loadingTweenDrawable="@anim/translate" //补间动画，此属性要结合app:loadingImage一起使用。
     
 ####3.Use code：
+
+#####layout.xml:
+
+#####The LoadingLayout layout as the root or the same size and layout of the outermost layer layout
+	<co.songlcy.loadinglayout.view.LoadingLayout
+	    xmlns:android="http://schemas.android.com/apk/res/android"
+	    xmlns:app="http://schemas.android.com/apk/res-auto"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:id="@+id/loadinglayout"
+	    app:contentBg="#55000000"//遮罩层背景
+	    app:strLoading="正在加载"//显示的加载提示
+	    app:loadingTweenDrawable="@anim/tr"//使用补间动画
+	    >
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Hello World!" />
+	</co.songlcy.loadinglayout.view.LoadingLayout>
+	
+#####Activity:
+
     mLoadingLayout = (LoadingLayout) findViewById(R.id.loadinglayout);
     
     mLoadingLayout.showLoading();//显示Loading
