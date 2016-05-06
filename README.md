@@ -69,14 +69,15 @@ Above two maps are custom different Dialog. Loading as long as you have a wealth
 	    android:layout_width="match_parent"
 	    android:layout_height="match_parent"
 	    android:id="@+id/loadinglayout"
-	    app:contentBg="#55000000"//遮罩层背景
-	    app:strLoading="正在加载"//显示的加载提示
-	    app:loadingTweenDrawable="@anim/tr"//使用补间动画
-	    >
+	    app:contentBg="#55000000"
+	    app:strLoading="正在加载"
+	    app:loadingTweenDrawable="@anim/tr"//使用补间动画>
+	    
 	    <TextView
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="Hello World!" />
+	        
 	</co.songlcy.loadinglayout.view.LoadingLayout>
 	
 #####Activity:
