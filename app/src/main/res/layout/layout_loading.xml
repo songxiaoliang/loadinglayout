@@ -10,8 +10,7 @@
         android:layout_height="100dp"
         android:orientation="horizontal"
         android:background="@android:color/white"
-        android:gravity="center"
-        >
+        android:gravity="center">
         <ImageView
             android:id="@+id/iv_loading"
             android:layout_width="30dp"
