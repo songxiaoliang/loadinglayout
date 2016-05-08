@@ -4,11 +4,11 @@ Above two maps are custom different Dialog. Loading as long as you have a wealth
 #####for example:
 ######Gif Loading
 
-![](https://github.com/songxiaoliang/loadinglayout/blob/master/app/demo/loading_gif.jpg "Gif图加载效果") 
+![](https://github.com/songxiaoliang/loadinglayout/blob/master/app/demo/gif_demo.jpg "Gif图加载效果") 
 
 ######FrameAnimation Loading
 
-![](https://github.com/songxiaoliang/loadinglayout/blob/master/app/demo/loading_frameAnimation.jpg "帧动画加载效果") 
+![](https://github.com/songxiaoliang/loadinglayout/blob/master/app/demo/frameAnimation_demo.jpg "帧动画加载效果") 
 
 ## Development Help
 
