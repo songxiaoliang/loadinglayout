@@ -20,5 +20,5 @@
         <attr name="loadingImage" format="reference" />
         <attr name="loadingContentDrawable" format="reference" />
     </declare-styleable>
-    
+
 </resources>
