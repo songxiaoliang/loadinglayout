@@ -1,7 +1,6 @@
 # LoadingLayout
 
 Above two maps are custom different Dialog. Loading as long as you have a wealth of imagination, you can define a more splendid load of animation。
-#####for example:
 ######Gif Loading
 
 ![](https://github.com/songxiaoliang/loadinglayout/blob/master/app/demo/gif_demo.jpg "Gif图加载效果") 
