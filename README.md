@@ -1,27 +1,27 @@
 # LoadingLayout
 
 Above two maps are custom different Dialog. Loading as long as you have a wealth of imagination, you can define a more splendid load of animation。
-######Gif Loading
+###### Gif Loading
 
 ![](https://github.com/songxiaoliang/loadinglayout/blob/master/app/demo/gif_demo.jpg "Gif图加载效果") 
 
-######FrameAnimation Loading
+###### FrameAnimation Loading
 
 ![](https://github.com/songxiaoliang/loadinglayout/blob/master/app/demo/frameAnimation_demo.jpg "帧动画加载效果") 
 
 ## Development Help
 
-####1.Dependence：
+#### 1.Dependence：
 
-#####Android Studio：
-#####Insert the following dependency to build.gradle file of your project:
+##### Android Studio：
+##### Insert the following dependency to build.gradle file of your project:
     
      compile 'com.song:loadinglayout:1.0.1'
       
-#####Eclipse：
-#####Copy and layout LoadingLayout attrs file module under the values and res folder of your module layout_loading corresponding directory.
+##### Eclipse：
+##### Copy and layout LoadingLayout attrs file module under the values and res folder of your module layout_loading corresponding directory.
       
-####2.LoadingLayout support function：
+#### 2.LoadingLayout support function：
       
     app:contentBg="@android:color/transparent" //遮罩层背景色
       
@@ -57,11 +57,11 @@ Above two maps are custom different Dialog. Loading as long as you have a wealth
     
     app:loadingTweenDrawable="@anim/translate" //补间动画，此属性要结合app:loadingImage一起使用。
     
-####3.Use code：
+#### 3.Use code：
 
-#####layout.xml:
+##### layout.xml:
 
-#####The LoadingLayout layout as the root or the same size and layout of the outermost layer layout
+##### The LoadingLayout layout as the root or the same size and layout of the outermost layer layout
 	<co.songlcy.loadinglayout.view.LoadingLayout
 	    xmlns:android="http://schemas.android.com/apk/res/android"
 	    xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -79,7 +79,7 @@ Above two maps are custom different Dialog. Loading as long as you have a wealth
 	        
 	</co.songlcy.loadinglayout.view.LoadingLayout>
 	
-#####Activity:
+##### Activity:
 
     mLoadingLayout = (LoadingLayout) findViewById(R.id.loadinglayout);
     
@@ -98,7 +98,7 @@ Above two maps are custom different Dialog. Loading as long as you have a wealth
 	    },5000);
         
 ## My Blog
-####[Click to view](http://blog.csdn.net/u013718120)
+#### [Click to view](http://blog.csdn.net/u013718120)
 ## Contact Me
-####Email：563609104@qq.com
+#### Email：563609104@qq.com
     
